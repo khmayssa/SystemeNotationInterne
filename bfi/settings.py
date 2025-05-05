@@ -48,6 +48,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+
 ]
 
 ROOT_URLCONF = 'bfi.urls'
@@ -142,6 +144,10 @@ MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
 
 
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Stocker en base de données
+# settings.py
+SESSION_ENGINE = 'django.contrib.sessions.backends.db'  # Si vous utilisez une session en base de données
+
+
 SESSION_COOKIE_AGE = 86400  # Durée de la session (1 jour)
 SESSION_SAVE_EVERY_REQUEST = True  # Sauvegarder après chaque requête
 

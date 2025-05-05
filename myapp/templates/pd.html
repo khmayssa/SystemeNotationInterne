@@ -122,23 +122,23 @@
               <thead>
                 <tr>
                   <th>ID</th>
-                  <th>Grade 2024</th>
                   <th>PD 2024 (%)</th>
+                  <th>Classe</th>
+                  <th>Commentaire de risque</th>
                 </tr>
               </thead>
               <tbody>
                 {% for row in PD_2024 %}
                 <tr>
                   <td>{{ row.id }}</td>
-                  <td>{{ row.grade2024 }}</td>
-                  <td>{{ row.PD_2024 }}</td>
-                  <td>{{ row.Stage_2024 }}</td>
-                </tr>
+                  <td>{{ row.PD_2024|floatformat:2 }}%</td>
+                  <td>{{ row.level }}</td>
+                  <td>{{ row.comment }}</td>
+              </tr>
                 {% endfor %}
               </tbody>
             </table>
 
-           
 
             <h2>📌 PD à Vie (Lifetime) estimée :</h2>
             <table>

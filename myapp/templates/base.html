@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 
+
     <style>
         html, body {
             height: 100%;
@@ -193,7 +194,7 @@
         .submenu {
             display: none;
             list-style: none;
-            padding-left: 15px;
+            padding-left: 20px;
         }
         
         .submenu.show {
@@ -206,7 +207,7 @@
 <body>
     <header class="header-navbar">
         <div class="left-section">
-            <img src="/media/bfi.gif" alt="Logo" class="navbar-logo">
+            <img src="/media/unnamed.png" alt="Logo" class="navbar-logo">
             <div class="header-info">
                 <p class="title">CARTHAGO SCORING 1.0.0</p>
                 <p class="welcome">Bienvenue admin</p>
@@ -228,20 +229,17 @@
                     <img src="/media/folder.gif" alt="folder" class="menu-icon"> Aperçu des données 
                 </a>
             </li>
+            <!--
+
             <li class="nav-item {% if request.resolver_match.url_name == 'plot' %}active{% endif %}">
                 <a class="nav-link" href="{% url 'plot' %}">
-                     <img src="/media/folder.gif" alt="folder" class="menu-icon"> Visualization
+                     <img src="/media/folder.gif" alt="folder" class="menu-icon"> Visualisation
                 </a>
             </li>
-         
+        -->
             <li class="nav-item {% if request.resolver_match.url_name == 'feature_selection' %}active{% endif %}">
                 <a class="nav-link" href="{% url 'feature_selection' %}">
                      <img src="/media/folder.gif" alt="folder" class="menu-icon"> Sélection des variables
-                </a>
-            </li>
-            <li class="nav-item {% if request.resolver_match.url_name == 'transition_matrix' %}active{% endif %}">
-                <a class="nav-link" href="{% url 'transition_matrix' %}">
-                    <img src="/media/folder.gif" alt="folder" class="menu-icon"> Matrice de transition
                 </a>
             </li>
             <li class="nav-item">
@@ -253,12 +251,29 @@
                     <li class="nav-item"><a class="nav-link" href="{% url 'lgd' %}"><img src="/media/folder.gif" alt="folder" class="menu-icon"> LGD</a></li>
                     <li class="nav-item"><a class="nav-link" href="{% url 'ead' %}"><img src="/media/folder.gif" alt="folder" class="menu-icon"> EAD</a></li>
                 </ul>
+            <li class="nav-item">
+                    <a class="nav-link" href="#" id="evaluation-link">
+                        <img src="/media/folder.gif" class="menu-icon"> Evaluation Périodique du Risque
+                    </a>
+                <ul class="submenu {% if request.resolver_match.url_name == 'vision360' or request.resolver_match.url_name == 'fiche_client' %}show{% endif %}" id="evaluationMenu">
+                    <li class="nav-item">
+                            <a class="nav-link" href="{% url 'vision360' %}">
+                                <img src="/media/folder.gif" alt="folder" class="menu-icon">Vision 360° du portefeuille risque
+                            </a>
+                    </li>
+                     <li class="nav-item">
+                            <a class="nav-link" href="{% url 'fiche_client' %}">
+                                <img src="/media/folder.gif" alt="folder" class="menu-icon">Fiche Client
+                            </a>
+                    </li>
+                </ul>
             </li>
+                
             
             
             
         </ul>
-        <img src="/media/bfi.gif" alt="Image de fin" class="navbar-image" >
+        <img src="/media/unnamed.png" alt="Image de fin" class="navbar-image" >
     </nav>
     
     
@@ -272,7 +287,22 @@
                 subMenu.classList.toggle("show");
             });
         });
-        </script>
+    </script>
+
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const evaluationLink = document.getElementById("evaluation-link");
+            const evaluationMenu = document.getElementById("evaluationMenu");
+        
+            evaluationLink.addEventListener("click", function(event) {
+                event.preventDefault(); // Empêche la redirection
+                evaluationMenu.classList.toggle("show");
+                });
+            });
+    </script>
+        
+        
         
     
     <div class="container content">
